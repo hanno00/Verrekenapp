@@ -1,12 +1,33 @@
 <h3>Wie heeft wat betaald?</h3>
 
-<div *ngFor="let person of people">
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
+<div class="container">
+  <div class="row row-cols-2">
+    <div style="padding: 5px;" *ngFor="let person of people">
+      <div class="col card border-primary">
         <div class="card-body text-primary">
-          <p class="card-text">{{person.name}} heeft €{{person.totalAmount | number:'.2'}} betaald</p>
+          <p class="card-text">
+            {{ person.name }} heeft €{{ person.totalAmount | number: ".2" }}
+            betaald
+          </p>
         </div>
       </div>
+    </div>
+  </div>
 </div>
 
-<h3>Total Amount spent is €{{totalAmountSpent | number:'.2'}}</h3>
-<button (click)="getPeople()" class="btn-primary">refresh</button>
+<h3>Total amount spent is €{{ totalAmountSpent | number: ".2" }}</h3>
+
+<div class="container">
+  <div class="row row-cols-2">
+    <div style="padding: 5px;" *ngFor="let payment of payments">
+      <div class="col card border-primary">
+        <div class="card-body text-primary">
+          <p class="card-text">
+            {{ payment.payer }} moet €{{ payment.amount | number: ".2" }} betalen
+          aan {{ payment.receiver }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
