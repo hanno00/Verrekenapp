@@ -1,0 +1,10 @@
+<h3>Wie heeft wat betaald?</h3>
+
+<div *ngFor="let person of people">
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-body text-primary">
+          <p class="card-text">{{person.name}} heeft €{{person.totalAmount | number:'.2'}} betaald</p>
+        </div>
+      </div>
+</div>
+<button (click)="getPeople()" class="btn-primary">refresh</button>

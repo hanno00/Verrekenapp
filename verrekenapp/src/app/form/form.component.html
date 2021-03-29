@@ -1,0 +1,24 @@
+<h3>Nieuwe invoer</h3>
+<div>
+  <label for="name">Name:</label><br />
+  <input
+    id="name"
+    [(ngModel)]="person.name"
+    placeholder="Insert name here"
+  /><br />
+  <label for="amount">Amount:</label><br />
+  <input
+    id="amount"
+    [(ngModel)]="person.totalAmount"
+    placeholder="Insert amount here"
+    currencyMask
+    [options]="{
+      prefix: '€ ',
+      thousands: '.',
+      decimal: ',',
+      align: 'left',
+      allowNegative: false
+    }"
+  /><br />
+  <button (click)="addTransaction()" class="btn-primary">Verzenden</button>
+</div>
