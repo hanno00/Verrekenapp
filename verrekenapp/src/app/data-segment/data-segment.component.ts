@@ -14,6 +14,9 @@ export class DataSegmentComponent implements OnInit {
     totalAmount: 15,
     id: 1
   }];
+
+  totalAmountSpent: number;
+
   constructor(private dataflowService: DataflowService, private eventhandler: EventhandlerService) { }
 
   ngOnInit(): void {
@@ -25,6 +28,15 @@ export class DataSegmentComponent implements OnInit {
     this.dataflowService.getPeople().subscribe((people) => {
       this.people = people;
       console.log(this.people);
+      this.getTotalAmountSpent();
     });
+  }
+
+  getTotalAmountSpent(): void{
+    let sum: number = 0;
+    this.people.map(person => {
+      sum += +person.totalAmount;
+    });
+    this.totalAmountSpent = sum;
   }
 }
